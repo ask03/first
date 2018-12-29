@@ -55,6 +55,12 @@ contract Casino {
      distributePrizes(numberGenerated);
    }
 
+   function resetData() {
+     players.length = 0; //delete the players array
+     totalBets = 0;
+     numberOfBets = 0;
+   }
+
    // Sends the corresponding ether to each winner depending on the total bets
    function distributePrizes(uint256 numberWinner) public {
      address[100] memory winners;
@@ -80,6 +86,9 @@ contract Casino {
          winners[j].transfer(winnerEtherAmount);
        }
      }
+
+     resetData();
+
    }
 
 
